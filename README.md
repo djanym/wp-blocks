@@ -47,7 +47,7 @@ npm run build:{block-name} // For final production version
 Include block php file in functions.php:
 
 ```
-function gutenberg_block_custom_2col_img_content_row() {
+function gutenberg_block_{block-name}() {
     register_block_type( __DIR__ . '/wp-blocks/{block-folder}' );
 }
 add_action( 'init', 'gutenberg_block_{block-name}' );
