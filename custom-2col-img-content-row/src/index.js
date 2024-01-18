@@ -24,7 +24,7 @@ registerBlockType(metadata.name, {
         },
         blockBackgroundColor: {
             type: 'string',
-            default: '#6699cc',
+            default: '#008651', // Add `00` to the end of the color to make it transparent. Example: #FFFFFF00
         }
     },
     supports: {

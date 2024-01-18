@@ -9,94 +9,45 @@
         margin-bottom: 2em;
         margin-top: 2em;
 
-        .content-col {
-            color: white;
+        .content-grid {
+            padding: 1.5rem 0;
+        }
 
-            h1, h2, h3, h4, h5, h6 {
-                color: white;
-            }
+        .cols {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
 
-            a {
-                color: white;
+            .col {
+                flex-basis: 50%;
+                //width: 50%;
 
-                &:hover {
-                    font-weight: bold;
+                &.left-col {
+                    order: 0;
                 }
-            }
 
-            .wp-block-button {
-                text-align: center;
-                margin-top: 10px;
-                padding: 20px;
-
-                .wp-element-button {
-                    background-color: transparent;
-                    border-radius: 0;
-                    border: 1px solid white;
-                    padding: .6rem 1.2rem;
-                    color: white;
-                    font-size: 1.25rem;
-                    text-decoration: none;
-
-                    &:hover {
-                        font-weight: bold;
-                    }
+                &.right-col {
+                    order: 1;
                 }
             }
         }
 
         .image-col {
             figure {
-                img {
-                    padding: 0;
-                }
-
-                figcaption {
-                    padding: 0;
-                    color: white;
-                    margin: 5px 0 0;
-                    text-align: center;
-                }
+                margin: 0;
+                padding: 0;
             }
-        }
-    }
 
-    .full-width {
-        clear: both;
-        margin-left: calc(-100vw / 2 + 1000px / 2);
-        margin-right: calc(-100vw / 2 + 1000px / 2);
-        @media (max-width: 990px) {
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-    }
-
-    .row {
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 0;
-
-        &.image-col-left .image-col {
-            order: 0;
-            text-align: right;
-
-            @media (max-width: 768px) {
+            figcaption {
+                padding: 0;
+                color: white;
+                margin: 5px 0 0;
                 text-align: center;
             }
         }
 
-        &.image-col-right .image-col {
-            order: 1;
-            text-align: left;
-
-            @media (max-width: 768px) {
-                text-align: center;
-            }
+        .content-col {
+            padding: 1rem 2rem;
         }
-
-
-
     }
-
 }

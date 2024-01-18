@@ -26,8 +26,11 @@ export default function Edit({attributes, setAttributes}) {
     });
 
     const contentColumnTemplate = [
-        ['core/paragraph', {placeholder: 'Fill with content...'}],
-        ['core/button', {placeholder: 'Add button label', href: '#'}],
+        ['core/heading', { level: 2, textAlign: 'center', placeholder: 'Add Heading' }],
+        ['core/paragraph', { align: 'center', placeholder: 'Fill with content...'}],
+        ['core/buttons', { align: 'center' }, [
+            ['core/button', { placeholder: 'Add button label', href: '#', align: 'center' }],
+        ]],
     ];
 
     // Get the saved HTML element for the image block

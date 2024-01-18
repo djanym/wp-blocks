@@ -14,17 +14,17 @@ export default function save({attributes}) {
 
     return (
         <div {...useBlockProps.save()}>
-            <div className="full-width" style={{backgroundColor: blockBackgroundColor}}>
-                <div className={`row align-content-center ${imageColumnPosition === 'left' ? 'image-col-left' : 'image-col-right'}`}>
-                    <div className="col-md-5 image-col">
+            <div className="alignfull content-grid" style={{backgroundColor: blockBackgroundColor}}>
+                <div className="breakout cols">
+                    <div className={`col image-col ${imageColumnPosition === 'left' ? 'left-col' : 'right-col'}`}>
                         {imageSrc && (
                             <figure>
-                                <img src={imageSrc} className="img-fluid" alt="Image" />
+                                <img src={imageSrc} className="img-fluid" alt="Image"/>
                                 {imageCaption && <figcaption>{imageCaption}</figcaption>}
                             </figure>
                         )}
                     </div>
-                    <div className="col-md-7 content-col">
+                    <div className="col content-col">
                         <InnerBlocks.Content/>
                     </div>
                 </div>

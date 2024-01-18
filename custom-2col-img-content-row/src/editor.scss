@@ -32,6 +32,10 @@
                 max-width: 60%;
                 color: white;
 
+                .block-editor-inner-blocks {
+                    width: 100%;
+                }
+
                 a {
                     color: white;
 
@@ -42,10 +46,10 @@
 
                 .wp-block-button {
                     .wp-element-button {
-                        background-color: transparent;
-                        border-radius: 0;
-                        border: 1px solid white;
-                        padding: .6rem 1.2rem;
+                        //background-color: transparent;
+                        //border-radius: 0;
+                        //border: 1px solid white;
+                        //padding: .6rem 1.2rem;
                     }
                 }
             }
