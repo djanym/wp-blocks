@@ -2,33 +2,36 @@
 
 ## Installation
 
-### 1. `cd` to the theme directory
+### 1. Install Node.
+1. If you don't have it already, download [Node](https://nodejs.org/en/).
+2. Install it.
 
-### 2. Clone this repository to your theme. If you're already using git, you can add this repository as a submodule.
+### 2. `cd` to the theme directory
+
+### 3. Clone this repository to your theme as a submodule (if you're already using git repo in the project).
 ```
 git submodule add -f git@github.com:djanym/wp-blocks.git src/wp-blocks/
 ```
 
-### 3. Install Node.
-1. If you don't have it already, download [Node](https://nodejs.org/en/).
-2. Install it.
-
-### 4. Install theme dependencies.
+### 4. `cd` to the blocks directory:
 ```
-npm install --save-dev @wordpress/block-editor @wordpress/blocks @wordpress/components @wordpress/scripts
+cd src/wp-blocks
 ```
 
-!!! IMPORTANT !!! Block's package.json will not be used, because we have a theme packages which covers everything. Just rename slug, title, etc.
+### 5. Install blocks dependencies.
+```
+npm install
+```
 
-### 5. Add to theme/plugin package.json:
+### 5. Add to scripts to package.json:
 Replace {block-name} with block name slug.
 Replace {block-folder} with necessary src.
 ```
 "scripts": {
     "build:wp": "wp-scripts build",
     "packages-update": "wp-scripts packages-update",
-    "build:{block-name}": "wp-scripts build --webpack-src-dir=./src/wp-blocks/{block-folder}/src --output-path=wp-blocks/{block-folder}/",
-    "start:{block-name}": "wp-scripts start --webpack-src-dir=./src/wp-blocks/{block-folder}/src --output-path=wp-blocks/{block-folder}/",
+    "start:{block-name}": "wp-scripts start --webpack-src-dir=./{block-folder}/src --output-path=../../wp-blocks/{block-folder}/",
+    "build:{block-name}": "wp-scripts build --webpack-src-dir=./{block-folder}/src --output-path=../../wp-blocks/{block-folder}/",
 }
 ```
 
@@ -36,7 +39,7 @@ Replace {block-folder} with necessary src.
 
 `build` for the final production version.
 
-### 6. #3. Build block files:
+### 6. Build block files:
 ```
 npm run start:{block-name} // For dev environment
 npm run build:{block-name} // For final production version
