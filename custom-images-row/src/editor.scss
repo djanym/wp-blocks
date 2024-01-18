@@ -1,0 +1,47 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.wp-block-gutenberg-blocks-custom-images-row {
+    &.wp-block {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+
+        .row {
+            display: flex;
+            flex-direction: row;
+
+            .col {
+                width: 33.33%;
+                border: 1px solid #ddd;
+                border-right-width: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:last-child {
+                    border-right-width: 1px;
+                }
+
+                .image-button {
+                    display: flex;
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    height: auto;
+                }
+
+                .btn {
+                    margin: 20px 10px;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}

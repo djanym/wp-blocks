@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "gutenberg-blocks/custom-2col-img-content-row",
+	"version": "1.0.0",
+	"title": "Custom Image + Content Row",
+	"category": "common",
+	"icon": "columns",
+	"description": "A full-width block with 2 columns: one media, one text content",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "custom-2col-img-content-row",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

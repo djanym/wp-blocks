@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "gutenberg-blocks/custom-image-row",
+	"version": "0.1.0",
+	"title": "Custom Full-Width Image Row",
+	"category": "common",
+	"icon": "format-image",
+	"description": "A full-width block with 3 images in a row",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "custom-image-row",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

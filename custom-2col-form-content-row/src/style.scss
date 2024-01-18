@@ -1,0 +1,160 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-gutenberg-blocks-custom-2col-form-content-row {
+
+    &:not(.wp-block) {
+        margin-bottom: 2em;
+        margin-top: 2em;
+
+        .content-col {
+            //color: white;
+            padding: 0 20px;
+
+            h1, h2, h3, h4, h5, h6 {
+                color: white;
+            }
+
+            a {
+                color: white;
+
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .image-col {
+            padding: 0 20px;
+
+            figure {
+                img {
+                    padding: 0;
+                }
+
+                figcaption {
+                    padding: 0;
+                    color: white;
+                    margin: 5px 0 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .full-width {
+        clear: both;
+        margin-left: calc(-100vw / 2 + 1000px / 2);
+        margin-right: calc(-100vw / 2 + 1000px / 2);
+        @media (max-width: 990px) {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+    }
+
+    .row {
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2.5rem 0;
+
+        &.image-col-left {
+            .image-col {
+                order: 0;
+                text-align: right;
+
+                @media (max-width: 768px) {
+                    order: 1;
+                    text-align: center;
+                }
+            }
+
+            .content-col {
+                order: 1;
+
+                @media (max-width: 768px) {
+                    order: 0;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+
+        &.image-col-right {
+            .image-col {
+                order: 1;
+                text-align: left;
+
+                @media (max-width: 768px) {
+                    text-align: center;
+                }
+            }
+
+            .content-col {
+                order: 0;
+            }
+        }
+    }
+
+    .form-wrapper {
+        margin-top: 20px;
+
+        .wpcf7-form {
+            .wpcf7-not-valid-tip {
+                margin: 0;
+                padding: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .wpcf7-spinner {
+                display: none;
+            }
+
+            &.submitting {
+                .wpcf7-spinner {
+                    display: inline-block;
+                }
+            }
+
+            .wpcf7-response-output {
+                border: none;
+            }
+
+            .wpcf7-form-control-wrap {
+                margin: 0;
+            }
+
+            .wpcf7-response-output {
+                margin: 1em 0.5em 0;
+            }
+        }
+
+        .btn:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .form-row, .form-group {
+        p {
+            margin: 0;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        font-size: 20px;
+        line-height: 1.5;
+        margin-bottom: 5px;
+    }
+
+    .btn{
+        background-color: unset;
+        text-transform: uppercase;
+        padding: 5px 35px;
+    }
+
+}
