@@ -48,7 +48,7 @@ Include block php file in functions.php:
 
 ```
 function gutenberg_block_custom_2col_img_content_row() {
-    register_block_type( __DIR__ . '/wp-blocks/custom-2col-img-content-row' );
+    register_block_type( __DIR__ . '/wp-blocks/{block-folder}' );
 }
-add_action( 'init', 'gutenberg_block_custom_2col_img_content_row' );
+add_action( 'init', 'gutenberg_block_{block-name}' );
 ```
