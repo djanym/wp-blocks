@@ -14,8 +14,8 @@ export default function save({attributes}) {
 
     return (
         <div {...useBlockProps.save()}>
-            <div className="alignfull content-grid" style={{backgroundColor: blockBackgroundColor}}>
-                <div className="breakout cols">
+            <div className="content-wrapper" style={{backgroundColor: blockBackgroundColor}}>
+                <div className="cols">
                     <div className={`col image-col ${imageColumnPosition === 'left' ? 'left-col' : 'right-col'}`}>
                         {imageSrc && (
                             <figure>

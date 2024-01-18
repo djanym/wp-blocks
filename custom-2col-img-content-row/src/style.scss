@@ -9,14 +9,19 @@
         margin-bottom: 2em;
         margin-top: 2em;
 
-        .content-grid {
+        .content-wrapper {
+            margin-left: calc(-100vw / 2 + 100% / 2);
+            margin-right: calc(-100vw / 2 + 100% / 2);
             padding: 1.5rem 0;
+            width: unset;
         }
 
         .cols {
             display: flex;
             flex-direction: row;
             align-items: center;
+            margin-right: auto;
+            margin-left: auto;
 
             .col {
                 flex-basis: 50%;
