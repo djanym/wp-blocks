@@ -1,0 +1,58 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-gutenberg-blocks-custom-2col-img-content-row {
+
+    &:not(.wp-block) {
+        margin-bottom: 2em;
+        margin-top: 2em;
+
+        .content-wrapper {
+            margin-left: calc(-100vw / 2 + 100% / 2);
+            margin-right: calc(-100vw / 2 + 100% / 2);
+            padding: 1.5rem 0;
+            width: unset;
+        }
+
+        .cols {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: auto;
+            margin-left: auto;
+
+            .col {
+                flex-basis: 50%;
+                //width: 50%;
+
+                &.left-col {
+                    order: 0;
+                }
+
+                &.right-col {
+                    order: 1;
+                }
+            }
+        }
+
+        .image-col {
+            figure {
+                margin: 0;
+                padding: 0;
+            }
+
+            figcaption {
+                padding: 0;
+                color: white;
+                margin: 5px 0 0;
+                text-align: center;
+            }
+        }
+
+        .content-col {
+            padding: 1rem 2rem;
+        }
+    }
+}
