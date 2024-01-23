@@ -3,6 +3,10 @@
  * and in the editor.
  */
 
+@use "../../../scss/project-related/vars";
+
+$mobile-breakpoint: vars.$mobile-breakpoint;
+
 .wp-block-gutenberg-blocks-custom-2col-img-content-row {
 
     &:not(.wp-block) {
@@ -17,18 +21,31 @@
         }
 
         .cols {
-            display: flex;
-            flex-direction: row;
+            //display: flex; // commented because of display: grid;
+            //flex-direction: row; // commented because of display: grid;
             align-items: center;
             margin-right: auto;
             margin-left: auto;
 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+
+            @media (max-width: $mobile-breakpoint ) {
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: 4fr 3fr;
+            }
+
             .col {
-                flex-basis: 50%;
-                //width: 50%;
+                //flex-basis: 50%; // commented because of display: grid;
+                //width: 50%; // commented because of display: grid;
 
                 &.left-col {
                     order: 0;
+
+                    @media (max-width: $mobile-breakpoint ) {
+                        order: 1; // After content
+                    }
                 }
 
                 &.right-col {
@@ -38,6 +55,16 @@
         }
 
         .image-col {
+            height: 100%; // for display: grid;
+
+            .image-container {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
             figure {
                 margin: 0;
                 padding: 0;
@@ -52,7 +79,7 @@
         }
 
         .content-col {
-            padding: 1rem 2rem;
+            padding: 4rem 2rem;
         }
     }
 }

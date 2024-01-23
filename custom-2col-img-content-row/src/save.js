@@ -29,15 +29,16 @@ export default function save({ attributes }) {
                         }`}
                     >
                         {imageSrc && (
+                            <div
+                                className="image-container"
+                                style={{ backgroundImage: `url(${imageSrc})` }}
+                            >
+                                &nbsp;
+                            </div>
+                        )}
+                        {imageCaption && (
                             <figure>
-                                <img
-                                    src={imageSrc}
-                                    className="img-fluid"
-                                    alt="Image"
-                                />
-                                {imageCaption && (
-                                    <figcaption>{imageCaption}</figcaption>
-                                )}
+                                <figcaption>{imageCaption}</figcaption>
                             </figure>
                         )}
                     </div>

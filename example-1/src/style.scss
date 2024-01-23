@@ -10,8 +10,8 @@
         margin-top: 2em;
 
         .content-wrapper {
-            margin-left: calc(-100vw / 2 + 100% / 2);
-            margin-right: calc(-100vw / 2 + 100% / 2);
+            //margin-left: calc((var(--half-width) - 50%) * -1);
+            //margin-right: calc((var(--half-width) - 50%) * -1);
             padding: 1.5rem 0;
             width: unset;
         }
