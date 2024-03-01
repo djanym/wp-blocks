@@ -6,7 +6,3 @@ node_modules/
 ######################
 .DS_Store
 .DS_Store?
-
-# Theme files
-assets/css/
-assets/js/build
