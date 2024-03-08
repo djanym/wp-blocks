@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "theme/custom-gallery-container",
+    "version": "1.0.0",
+    "title": "Custom Theme Gallery Container",
+    "category": "media",
+    "icon": "format-gallery",
+    "description": "Display multiple images placed in a row. Can be used as a container for logos or similar images. Custom theme can override styles.",
+    "keywords": [
+        "gallery",
+        "container",
+        "images",
+        "custom"
+    ],
+    "textdomain": "custom-gallery-container",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

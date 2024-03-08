@@ -1,0 +1,18 @@
+{
+	"name": "custom-images-row",
+	"version": "1.0.0",
+	"description": "A full-width block with images in row",
+	"author": "Nael Concescu",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^26.4.0"
+	}
+}

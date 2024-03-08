@@ -9,8 +9,8 @@ import metadata from './block.json';
 // Get default values for the block attributes based on the custom theme configuration.
 import config from '../../../../wp-blocks.config.json';
 
-const attributes = config.blocks['custom-container'].attributes;
-const supports = config.blocks['custom-container'].supports;
+const attributes = config.blocks['custom-gallery-container'].attributes;
+const supports = config.blocks['custom-gallery-container'].supports;
 
 // registerBlockStyle( 'core/button', {
 //     name: 'custom-button',
@@ -60,12 +60,12 @@ registerBlockType(metadata.name, {
         anchor: true,
         color: {
             // Enable gradients UI control.
-            gradients: supports.gradients, // If `true` force text and background UI controls.
+            gradients: supports.gradients ?? false, // If `true` force text and background UI controls.
             // Enables background and text.
-            color: true,
+            color: supports.colors ?? false, // Possible values: true, false, "only".
             // Disable background support. Text color support is still enabled.
-            background: true, // Possible values: true, false, "only".
-            text: true // Possible values: true, false, "only".
+            background: supports.bgColor ?? false, // Possible values: true, false, "only".
+            text: supports.textColor ?? false // Possible values: true, false, "only".
         },
         // Add add_theme_support( 'custom-spacing' ); to enable spacing UI control.
         spacing: {
