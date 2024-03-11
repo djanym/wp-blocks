@@ -12,11 +12,6 @@ import config from '../../../../wp-blocks.config.json';
 const attributes = config.blocks['custom-gallery-container'].attributes;
 const supports = config.blocks['custom-gallery-container'].supports;
 
-// registerBlockStyle( 'core/button', {
-//     name: 'custom-button',
-//     label: 'Custom Button',
-// } );
-
 registerBlockType(metadata.name, {
     attributes: {
         // built-in attribute name. Works with `supports: { anchor: true }`.
@@ -77,22 +72,6 @@ registerBlockType(metadata.name, {
             blockGap: supports.blockGap ?? false // can be [ 'horizontal', 'vertical' ]
         }
     },
-    // styles: [
-    //     // Mark style as default.
-    //     {
-    //         name: 'default',
-    //         label: 'Rounded',
-    //         isDefault: true
-    //     },
-    //     {
-    //         name: 'outline',
-    //         label: 'Outline'
-    //     },
-    //     {
-    //         name: 'squared',
-    //         label: 'Squared'
-    //     }
-    // ],
     edit: Edit,
     save
 });

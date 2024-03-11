@@ -2,6 +2,10 @@
  * The following styles get applied inside the editor only.
  */
 
-.wp-block-theme-custom-container {
-    
+.wp-block-theme-custom-gallery-container {
+    .block-editor-inner-blocks {
+        .wp-block-gallery {
+            align-items: center;
+        }
+    }
 }

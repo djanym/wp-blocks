@@ -8,19 +8,35 @@
 
 //$mobile-breakpoint: vars.$mobile-breakpoint;
 
-.wp-block-theme-custom-container {
+.wp-block-theme-custom-gallery-container {
 
-    @if vars.$custom-container-spacing-y {
-        @include mx.padding-top(vars.$custom-container-spacing-y);
-        @include mx.padding-bottom(vars.$custom-container-spacing-y);
+    @if vars.$custom-gallery-container-spacing-y {
+        @include mx.padding-top(vars.$custom-gallery-container-spacing-y);
+        @include mx.padding-bottom(vars.$custom-gallery-container-spacing-y);
+    }
+
+    .wp-block-gallery {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &.has-nested-images {
+            figure.wp-block-image:not(#individual-image) { // This is to prevent the styles from being overwritten by built-in styles.
+                margin-bottom: 0;
+                align-items: center;
+            }
+        }
     }
 
     &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
         //margin-top: 2em;
         //margin-bottom: 2em;
 
-        .wp-block-group {
-            &__inner-container {
+        .wp-block-inner-container {
+            .wp-block-gallery {
+                .wp-block-image { // This is to prevent the styles from being overwritten by built-in styles.
+                    //padding-right: 20px;
+                    //width: auto;
+                }
             }
         }
 
