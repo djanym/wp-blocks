@@ -6,22 +6,28 @@ import Edit from './edit';
 import save from './save';
 import metadata from './block.json';
 
-registerBlockType( metadata.name, {
-	attributes: {
-		image1: {
-			type: 'string',
-			// source: 'attribute',
-			default: '',
-		},
-		image2: {
-			type: 'string',
-			default: '',
-		},
-		image3: {
-			type: 'string',
-			default: '',
-		}
-	},
-	edit: Edit,
-	save,
-} );
+// Get default values for the block attributes based on the custom theme configuration.
+import config from '../../../../wp-blocks.config.json';
+
+const attributes = config.blocks['custom-container'].attributes;
+const supports = config.blocks['custom-container'].supports;
+
+registerBlockType(metadata.name, {
+    attributes: {
+        image1: {
+            type: 'string',
+            // source: 'attribute',
+            default: ''
+        },
+        image2: {
+            type: 'string',
+            default: ''
+        },
+        image3: {
+            type: 'string',
+            default: ''
+        }
+    },
+    edit: Edit,
+    save
+});

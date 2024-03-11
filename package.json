@@ -1,6 +1,6 @@
 {
     "name": "wp-blocks",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "devDependencies": {
         "@wordpress/block-editor": "^12.17.0",
         "@wordpress/blocks": "^12.26.0",
@@ -13,6 +13,8 @@
         "start:custom-2col-img-content-row": "wp-scripts start --webpack-src-dir=./custom-2col-img-content-row/src --output-path=../../wp-blocks/custom-2col-img-content-row/",
         "build:custom-2col-img-content-row": "wp-scripts build --webpack-src-dir=./custom-2col-img-content-row/src --output-path=../../wp-blocks/custom-2col-img-content-row/",
         "start:custom-container": "wp-scripts start --webpack-src-dir=./custom-container/src --output-path=../../wp-blocks/custom-container/",
-        "build:custom-container": "wp-scripts build --webpack-src-dir=./custom-container/src --output-path=../../wp-blocks/custom-container/"
+        "build:custom-container": "wp-scripts build --webpack-src-dir=./custom-container/src --output-path=../../wp-blocks/custom-container/",
+        "start:custom-gallery-container": "wp-scripts start --webpack-src-dir=./custom-gallery-container/src --output-path=../../wp-blocks/custom-gallery-container/",
+        "build:custom-gallery-container": "wp-scripts build --webpack-src-dir=./custom-gallery-container/src --output-path=../../wp-blocks/custom-gallery-container/"
     }
 }

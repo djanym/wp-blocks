@@ -1,16 +1,13 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "gutenberg-blocks/custom-images-row",
+	"name": "theme/custom-logos-container",
 	"version": "0.1.0",
-	"title": "Custom Images Row",
-	"category": "common",
+	"title": "Custom Logo Container",
+	"category": "media",
 	"icon": "images-alt",
-	"description": "A full-width block with 3 images in a row",
-	"supports": {
-		"html": false
-	},
-	"textdomain": "custom-images-row",
+	"description": "A block with images in a row. Can be used for logos or similar.",
+	"textdomain": "custom-logos-container",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"

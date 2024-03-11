@@ -8,7 +8,7 @@ import { getSaveElement } from '@wordpress/blocks';
 export default function Edit({ attributes, setAttributes }) {
     const allowedBlocks = ['core/gallery'];
 
-    const contentTemplate = [['core/gallery', { columns: 2 }]];
+    const contentTemplate = [['core/gallery', { }]];
 
     const blockProps = useBlockProps({
         // style: {

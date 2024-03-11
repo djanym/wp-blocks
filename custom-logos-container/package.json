@@ -1,8 +1,9 @@
 {
-	"name": "custom-images-row",
+	"name": "custom-logos-container",
 	"version": "1.0.0",
-	"description": "A full-width block with images in row",
+	"description": "Not done. Not working. A block with images in a row. Can be used for logos or similar.",
 	"author": "Nael Concescu",
+	"sourceType": "module",
 	"scripts": {
 		"build": "wp-scripts build",
 		"format": "wp-scripts format",
