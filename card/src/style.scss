@@ -1,0 +1,31 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+@use "../../../scss/vars";
+@use "../../../scss/wp-theme-styles-lib/mixins" as mx;
+
+//$mobile-breakpoint: vars.$mobile-breakpoint;
+
+.wp-block-theme-card {
+
+    @if vars.$custom-container-spacing-y {
+        @include mx.padding-top(vars.$custom-container-spacing-y);
+        @include mx.padding-bottom(vars.$custom-container-spacing-y);
+    }
+
+    &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
+        //margin-top: 2em;
+        //margin-bottom: 2em;
+
+        .wp-block-group {
+            &__inner-container {
+            }
+        }
+
+        & + p {
+            @include mx.margin-top(2rem);
+        }
+    }
+}
