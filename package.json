@@ -15,6 +15,8 @@
         "start:custom-container": "wp-scripts start --webpack-src-dir=./custom-container/src --output-path=../../wp-blocks/custom-container/",
         "build:custom-container": "wp-scripts build --webpack-src-dir=./custom-container/src --output-path=../../wp-blocks/custom-container/",
         "start:custom-gallery-container": "wp-scripts start --webpack-src-dir=./custom-gallery-container/src --output-path=../../wp-blocks/custom-gallery-container/",
-        "build:custom-gallery-container": "wp-scripts build --webpack-src-dir=./custom-gallery-container/src --output-path=../../wp-blocks/custom-gallery-container/"
+        "build:custom-gallery-container": "wp-scripts build --webpack-src-dir=./custom-gallery-container/src --output-path=../../wp-blocks/custom-gallery-container/",
+        "start:card": "wp-scripts start --webpack-src-dir=./card/src --output-path=../../wp-blocks/card/",
+        "build:card": "wp-scripts build --webpack-src-dir=./card/src --output-path=../../wp-blocks/card/"
     }
 }

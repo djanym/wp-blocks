@@ -4,8 +4,12 @@
 	"name": "theme/card",
 	"version": "1.0.0",
 	"title": "Card",
-	"category": "Custom Theme",
-	"icon": "receipt",
+	"category": "theme-custom-blocks",
+	"keywords": [
+		"card",
+		"cards"
+	],
+	"icon": "text-page",
 	"description": "Card block for custom theme",
 	"textdomain": "card",
 	"editorScript": "file:./index.js",

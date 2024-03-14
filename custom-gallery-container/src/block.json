@@ -4,14 +4,15 @@
     "name": "theme/custom-gallery-container",
     "version": "1.0.0",
     "title": "Custom Theme Gallery Container",
-    "category": "media",
+    "category": "theme-custom-blocks",
     "icon": "format-gallery",
     "description": "Display multiple images placed in a row. Can be used as a container for logos or similar images. Custom theme can override styles.",
     "keywords": [
         "gallery",
         "container",
         "images",
-        "custom"
+        "custom",
+        "block"
     ],
     "textdomain": "custom-gallery-container",
     "editorScript": "file:./index.js",
