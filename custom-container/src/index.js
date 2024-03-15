@@ -9,8 +9,9 @@ import metadata from './block.json';
 // Get default values for the block attributes based on the custom theme configuration.
 import config from '../../../../wp-blocks.config.json';
 
-const attributes = config.blocks['custom-container'].attributes;
-const supports = config.blocks['custom-container'].supports;
+const attributes = config.blocks['custom-container'].attributes ?? {};
+const supports = config.blocks['custom-container'].supports ?? {};
+const styles = config.blocks['custom-container'].styles ?? [];
 
 // registerBlockStyle( 'core/button', {
 //     name: 'custom-button',
@@ -30,26 +31,33 @@ registerBlockType(metadata.name, {
         },
         // built-in attribute name. Works when text, background, gradient colors support enabled.
         style: {
-            type: 'object'
+            type: 'object',
             // margin: 'value',
             // padding: {
             // top: 'value'
             // }
+            default: {
+                color: {
+                    text: attributes.blockTextColor ?? '',
+                    background: attributes.blockBgColor ?? '',
+                    gradient: attributes.blockGradientBgColor ?? ''
+                }
+            }
         },
         // built-in attribute name. Works with `supports: { color: { text: true } }`.
         textColor: {
-            type: 'string'
-            // default: 'white' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            type: 'string',
+            default: attributes.blockTextColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { background: true } }`.
         backgroundColor: {
             type: 'string',
-            default: attributes.blockBgColor ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            default: attributes.blockBgColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { gradients: true } }`.
         gradient: {
             type: 'string',
-            default: attributes.blockGradientBgColor ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
+            default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
         }
     },
     supports: {
@@ -60,12 +68,12 @@ registerBlockType(metadata.name, {
         anchor: true,
         color: {
             // Enable gradients UI control.
-            gradients: supports.gradients, // If `true` force text and background UI controls.
+            gradients: supports.gradients ?? false, // If `true` force text and background UI controls.
             // Enables background and text.
-            color: true,
+            color: supports.colors ?? true,
             // Disable background support. Text color support is still enabled.
-            background: true, // Possible values: true, false, "only".
-            text: true // Possible values: true, false, "only".
+            background: supports.bgColor ?? true, // Possible values: true, false, "only".
+            text: supports.textColor ?? true // Possible values: true, false, "only".
         },
         // Add add_theme_support( 'custom-spacing' ); to enable spacing UI control.
         spacing: {
@@ -77,22 +85,7 @@ registerBlockType(metadata.name, {
             blockGap: supports.blockGap ?? false // can be [ 'horizontal', 'vertical' ]
         }
     },
-    // styles: [
-    //     // Mark style as default.
-    //     {
-    //         name: 'default',
-    //         label: 'Rounded',
-    //         isDefault: true
-    //     },
-    //     {
-    //         name: 'outline',
-    //         label: 'Outline'
-    //     },
-    //     {
-    //         name: 'squared',
-    //         label: 'Squared'
-    //     }
-    // ],
+    styles: styles ?? [],
     edit: Edit,
     save
 });

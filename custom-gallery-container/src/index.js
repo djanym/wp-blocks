@@ -9,8 +9,9 @@ import metadata from './block.json';
 // Get default values for the block attributes based on the custom theme configuration.
 import config from '../../../../wp-blocks.config.json';
 
-const attributes = config.blocks['custom-gallery-container'].attributes;
-const supports = config.blocks['custom-gallery-container'].supports;
+const attributes = config.blocks['custom-gallery-container'].attributes ?? {};
+const supports = config.blocks['custom-gallery-container'].supports ?? {};
+const styles = config.blocks['custom-gallery-container'].styles ?? [];
 
 registerBlockType(metadata.name, {
     attributes: {
@@ -25,26 +26,33 @@ registerBlockType(metadata.name, {
         },
         // built-in attribute name. Works when text, background, gradient colors support enabled.
         style: {
-            type: 'object'
+            type: 'object',
             // margin: 'value',
             // padding: {
             // top: 'value'
             // }
+            default: {
+                color: {
+                    text: attributes.blockTextColor ?? '',
+                    background: attributes.blockBgColor ?? '',
+                    gradient: attributes.blockGradientBgColor ?? ''
+                }
+            }
         },
         // built-in attribute name. Works with `supports: { color: { text: true } }`.
         textColor: {
-            type: 'string'
-            // default: 'white' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            type: 'string',
+            default: attributes.blockTextColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { background: true } }`.
         backgroundColor: {
             type: 'string',
-            default: attributes.blockBgColor ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            default: attributes.blockBgColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { gradients: true } }`.
         gradient: {
             type: 'string',
-            default: attributes.blockGradientBgColor ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
+            default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
         }
     },
     supports: {
@@ -72,6 +80,7 @@ registerBlockType(metadata.name, {
             blockGap: supports.blockGap ?? false // can be [ 'horizontal', 'vertical' ]
         }
     },
+    styles: styles ?? [],
     edit: Edit,
     save
 });

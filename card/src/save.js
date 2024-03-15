@@ -1,18 +1,10 @@
-import {
-    useBlockProps
-} from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
-export default function save( {attributes} ) {
-    const {imageSrc} = attributes;
-
+export default function save({ attributes }) {
     return (
-        <div { ...useBlockProps.save() }>
-            <div className="full-width">
-                <div className="row">
-                    <div className="col">
-                        { imageSrc && <img src={ imageSrc } alt="Image"/> }
-                    </div>
-                </div>
+        <div {...useBlockProps.save()}>
+            <div className="wp-card-block-inner-container">
+                <InnerBlocks.Content />
             </div>
         </div>
     );
