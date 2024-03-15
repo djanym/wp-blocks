@@ -10,15 +10,33 @@
 
 .wp-block-theme-card {
 
-    @if vars.$custom-container-spacing-y {
-        @include mx.padding-top(vars.$custom-container-spacing-y);
-        @include mx.padding-bottom(vars.$custom-container-spacing-y);
+    @if vars.$card-container-width {
+        width: mx.rfs-value(vars.$card-container-width);
+    }
+
+    @if vars.$card-container-padding-y {
+        @include mx.padding-top(vars.$card-container-padding-y);
+        @include mx.padding-bottom(vars.$card-container-padding-y);
+    }
+
+    @if vars.$card-container-padding-x {
+        @include mx.padding-right(vars.$card-container-padding-x);
+        @include mx.padding-left(vars.$card-container-padding-x);
+    }
+
+    @if vars.$card-container-gap {
+        @include mx.margin-right(vars.$card-container-gap);
+    }
+
+    @if vars.$card-container-border-radius {
+        @include mx.border-radius(vars.$card-container-border-radius);
+    }
+
+    :last-child {
+        margin-bottom: 0;
     }
 
     &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
-        //margin-top: 2em;
-        //margin-bottom: 2em;
-
         .wp-block-group {
             &__inner-container {
             }

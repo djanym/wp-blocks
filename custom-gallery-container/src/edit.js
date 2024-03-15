@@ -4,15 +4,19 @@ import './editor.scss';
 
 // export default function Edit( props ) {
 export default function Edit({ attributes, setAttributes }) {
+    const { textColor, backgroundColor, gradient } = attributes;
+
+    const blockProps = useBlockProps({
+        style: {
+            textColor,
+            backgroundColor,
+            gradient
+        }
+    });
+
     const allowedBlocks = ['core/gallery'];
 
     const contentTemplate = [['core/gallery', { }]];
-
-    const blockProps = useBlockProps({
-        // style: {
-        //     backgroundColor: blockBackgroundColor
-        // }
-    });
 
     return (
         <div {...blockProps}>

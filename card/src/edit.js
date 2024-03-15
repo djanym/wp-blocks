@@ -8,20 +8,20 @@ export default function Edit({ attributes, setAttributes }) {
 
     const blockProps = useBlockProps({
         style: {
-            textColor: textColor,
-            backgroundColor: backgroundColor,
-            gradient: gradient
+            textColor,
+            backgroundColor,
+            gradient
         }
     });
 
-    const bodyContentTemplate = [
+    const contentTemplate = [
         ['core/heading', { level: 4, placeholder: 'Add card heading' }],
         ['core/paragraph', { placeholder: 'Add card content...' }]
     ];
 
     return (
         <div {...blockProps}>
-            <InnerBlocks template={bodyContentTemplate} />
+            <InnerBlocks template={contentTemplate} />
         </div>
     );
 }

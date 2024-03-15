@@ -6,21 +6,20 @@ import { getSaveElement } from '@wordpress/blocks';
 
 // export default function Edit( props ) {
 export default function Edit({ attributes, setAttributes }) {
-    // const { imageSrc, imageCaption, blockBackgroundColor } = attributes;
+    const { textColor, backgroundColor, gradient } = attributes;
 
     const blockProps = useBlockProps({
-        // style: {
-        //     backgroundColor: blockBackgroundColor
-        // }
+        style: {
+            textColor,
+            backgroundColor,
+            gradient
+        }
     });
 
     const contentColumnTemplate = [
         ['core/heading', { level: 2, textAlign: 'center', placeholder: 'Add Heading' }],
         ['core/paragraph', { align: 'center', placeholder: 'Add content...' }]
     ];
-
-    // Get the saved HTML element for the image block
-    // const imageElement = imageSrc && getSaveElement('core/image', { url: imageSrc, caption: imageCaption });
 
     return (
         <div {...blockProps}>
