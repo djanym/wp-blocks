@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "theme/animated-number",
+	"version": "1.0.0",
+	"title": "Animated Number",
+	"category": "theme-custom-blocks",
+	"keywords": [
+		"animated",
+		"animation",
+		"counter",
+		"inline",
+		"number"
+	],
+	"icon": "text-page",
+	"description": "Display an animated number with a counter effect.",
+	"textdomain": "animated-number",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

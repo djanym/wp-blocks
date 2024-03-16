@@ -12,36 +12,6 @@
         width: mx.rfs-value(vars.$card-container-width);
     }
 
-    &.width-full {
-        width: 100%;
-        flex-basis: 100%;
-    }
-
-    &.width-half {
-        width: 50%;
-        flex-basis: 50%;
-    }
-
-    &.width-third {
-        width: 33.333333%;
-        flex-basis: 33.333333%;
-    }
-
-    &.width-quarter {
-        width: 25%;
-        flex-basis: 25%;
-    }
-
-    &.width-fifth {
-        width: 20%;
-        flex-basis: 20%;
-    }
-
-    &.width-auto {
-        width: auto;
-        flex-basis: auto;
-    }
-
     @if vars.$card-container-padding-y {
         @include mx.padding-top(vars.$card-container-padding-y);
         @include mx.padding-bottom(vars.$card-container-padding-y);
@@ -55,8 +25,6 @@
     @if vars.$card-container-border-radius {
         @include mx.border-radius(vars.$card-container-border-radius);
     }
-
-    box-sizing: border-box;
 
     :last-child {
         margin-bottom: 0;
