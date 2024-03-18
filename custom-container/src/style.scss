@@ -32,7 +32,11 @@
                     gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
                 }
 
-                .wp-block-theme-card {
+                //.wp-block-theme-card {
+                //    flex: 0 0 auto; /* Do not allow shrinking or growing */
+                //}
+
+                > div {
                     flex: 0 0 auto; /* Do not allow shrinking or growing */
                 }
             }
@@ -46,7 +50,12 @@
                     gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
                 }
 
-                .wp-block-theme-card {
+                //.wp-block-theme-card {
+                //    flex: 0 0 auto; /* Do not allow shrinking or growing */
+                //    margin: 0;
+                //}
+
+                .wp-block {
                     flex: 0 0 auto; /* Do not allow shrinking or growing */
                     margin: 0;
                 }
@@ -56,7 +65,7 @@
 
     // Styles for "Inline Layout" style option.
     @if vars.$custom-container-has-flex-layout-option {
-        &.is-inline-layout {
+        &.is-flex-layout {
 
             > .block-editor-inner-blocks > .block-editor-block-list__layout, // For admin editor.
             > .wp-block-group__inner-container {
@@ -69,13 +78,16 @@
                 }
             }
 
+            // For admin editor only.
+            > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                > .wp-block {
+                    margin: 0;
+                }
+            }
+
             // Responsive adjustments.
             //@media (max-width: 768px) {
             //    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            //}
-
-            //.wp-block-theme-card {
-            //    margin: 0;
             //}
         }
     }

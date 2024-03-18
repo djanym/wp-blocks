@@ -8,9 +8,9 @@
 
 .wp-block-theme-card {
 
-    @if vars.$card-container-width {
-        width: mx.rfs-value(vars.$card-container-width);
-    }
+    //@if vars.$card-container-width {
+    //    width: mx.rfs-value(vars.$card-container-width);
+    //}
 
     &.width-full {
         width: 100%;

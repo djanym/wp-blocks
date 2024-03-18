@@ -81,6 +81,15 @@ registerBlockType(metadata.name, {
         gridCols: {
             type: 'integer',
             default: 2
+        },
+        // Custom features: flex (inline) layout.
+        hasFlexLayoutOption: {
+            type: 'boolean',
+            default: features.hasFlexLayoutOption ?? false
+        },
+        flexLayoutOption: {
+            type: 'boolean',
+            default: false
         }
     },
     supports: {

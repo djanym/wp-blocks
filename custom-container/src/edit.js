@@ -6,12 +6,11 @@ import { useEffect, useState } from '@wordpress/element';
 
 // export default function Edit( props ) {
 export default function Edit({ attributes, setAttributes }) {
+    const [blockClasses, setBlockClasses] = useState('');
     const { textColor, backgroundColor, gradient } = attributes;
     const { hasHorizontalScrollerOption, horizontalScrollerOption } = attributes;
-    const [blockClasses, setBlockClasses] = useState('');
-    // const [enableGrid, setEnableGrid] = useState(attributes.enableGrid || false);
+    const { hasFlexLayoutOption, flexLayoutOption } = attributes;
     const { hasGridLayoutOption, gridLayoutOption, gridCols } = attributes;
-    // const [hasGridLayoutOption, gridLayoutOption, gridCols] = useState('');
     const minColsRange = 2;
     const maxColsRange = 12;
 
@@ -28,14 +27,15 @@ export default function Edit({ attributes, setAttributes }) {
     // Update block classes whenever widthOption or fontSize changes.
     useEffect(() => {
         updateBlockClasses();
-    }, [horizontalScrollerOption, gridLayoutOption, gridCols]);
+    }, [horizontalScrollerOption, gridLayoutOption, gridCols, flexLayoutOption]);
 
     // Update block classes based on widthOption and fontSize
     const updateBlockClasses = () => {
         let classes = [
             hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
             hasGridLayoutOption && gridLayoutOption && 'is-grid-layout',
-            hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`
+            hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`,
+            hasFlexLayoutOption && flexLayoutOption && 'is-flex-layout'
         ]
             .filter(Boolean)
             .join(' ');
@@ -51,7 +51,7 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <div {...blockProps}>
             <InspectorControls>
-                {(hasHorizontalScrollerOption || hasGridLayoutOption) && (
+                {(hasHorizontalScrollerOption || hasGridLayoutOption || hasFlexLayoutOption) && (
                     <PanelBody title="Layout Settings">
                         {hasHorizontalScrollerOption && (
                             <ToggleControl
@@ -69,6 +69,14 @@ export default function Edit({ attributes, setAttributes }) {
                                     <RangeControl label="Columns Number" value={gridCols} onChange={value => setAttributes({ gridCols: value })} min={minColsRange} max={maxColsRange} />
                                 )}
                             </>
+                        )}
+                        {hasFlexLayoutOption && (
+                            <ToggleControl
+                                label="Enable Flex Layout"
+                                help="When enabled, all content items will be displayed inline in multiple rows."
+                                checked={flexLayoutOption}
+                                onChange={value => setAttributes({ flexLayoutOption: value })}
+                            />
                         )}
                     </PanelBody>
                 )}
