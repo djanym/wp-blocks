@@ -1,4 +1,4 @@
-import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, InnerBlocks, useInnerBlocksProps } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
 // Those files can contain any CSS code that gets applied to the editor.
 import './editor.scss';
@@ -6,7 +6,7 @@ import { useEffect, useState } from '@wordpress/element';
 
 // export default function Edit( props ) {
 export default function Edit({ attributes, setAttributes }) {
-    const [blockClasses, setBlockClasses] = useState('');
+    const [innerBlockClasses, setInnerBlockClasses] = useState('');
     const { textColor, backgroundColor, gradient } = attributes;
     const { hasHorizontalScrollerOption, horizontalScrollerOption } = attributes;
     const { hasFlexLayoutOption, flexLayoutOption } = attributes;
@@ -16,7 +16,7 @@ export default function Edit({ attributes, setAttributes }) {
 
     // Set block props.
     const blockProps = useBlockProps({
-        className: `${blockClasses}`,
+        // className: `${blockClasses}`,
         style: {
             textColor,
             backgroundColor,
@@ -24,29 +24,41 @@ export default function Edit({ attributes, setAttributes }) {
         }
     });
 
-    // Update block classes whenever widthOption or fontSize changes.
-    useEffect(() => {
-        updateBlockClasses();
-    }, [horizontalScrollerOption, gridLayoutOption, gridCols, flexLayoutOption]);
-
-    // Update block classes based on widthOption and fontSize
-    const updateBlockClasses = () => {
-        let classes = [
-            hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
-            hasGridLayoutOption && gridLayoutOption && 'is-grid-layout',
-            hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`,
-            hasFlexLayoutOption && flexLayoutOption && 'is-flex-layout'
-        ]
-            .filter(Boolean)
-            .join(' ');
-
-        setBlockClasses(classes);
-    };
-
     const contentColumnTemplate = [
         ['core/heading', { level: 2, textAlign: 'center', placeholder: 'Add Heading' }],
         ['core/paragraph', { align: 'center', placeholder: 'Add content...' }]
     ];
+
+    // const innerBlocksProps = useInnerBlocksProps(blockProps);
+    const innerBlocksProps = useInnerBlocksProps(
+        {
+            className: `${innerBlockClasses}`
+        },
+        {
+            template: contentColumnTemplate,
+            templateInsertUpdatesSelection: false
+        }
+    );
+
+    // Update block classes whenever widthOption or fontSize changes.
+    useEffect(() => {
+        // updateBlockClasses();
+        updateInnerBlockClasses();
+    }, [horizontalScrollerOption, gridLayoutOption, gridCols, flexLayoutOption]);
+
+    // Update block classes based on widthOption and fontSize
+    const updateInnerBlockClasses = () => {
+        let classes = [
+            hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
+            hasGridLayoutOption && gridLayoutOption && 'is-layout-grid',
+            hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`,
+            hasFlexLayoutOption && flexLayoutOption && 'is-layout-flex'
+        ]
+            .filter(Boolean)
+            .join(' ');
+
+        setInnerBlockClasses(classes);
+    };
 
     return (
         <div {...blockProps}>
@@ -81,7 +93,7 @@ export default function Edit({ attributes, setAttributes }) {
                     </PanelBody>
                 )}
             </InspectorControls>
-            <InnerBlocks template={contentColumnTemplate} />
+            <div {...innerBlocksProps} />
         </div>
     );
 }

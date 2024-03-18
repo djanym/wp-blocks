@@ -1,4 +1,4 @@
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const { hasHorizontalScrollerOption, horizontalScrollerOption } = attributes;
@@ -6,24 +6,27 @@ export default function save({ attributes }) {
     const { hasFlexLayoutOption, flexLayoutOption } = attributes;
 
     // Define the class based on the condition.
-    const blockClass = [
+    const innerBlockClass = [
+        'wp-block-group__inner-container', // Default class.
         hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
-        hasGridLayoutOption && gridLayoutOption && 'is-grid-layout',
+        hasGridLayoutOption && gridLayoutOption && 'is-layout-grid',
         hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`,
-        hasFlexLayoutOption && flexLayoutOption && 'is-flex-layout'
+        hasFlexLayoutOption && flexLayoutOption && 'is-layout-flex'
     ]
         .filter(Boolean)
         .join(' ');
 
     const blockProps = useBlockProps.save({
-        className: blockClass
+        // className: blockClass
+    });
+
+    const innerBlocksProps = useInnerBlocksProps.save({
+        className: innerBlockClass
     });
 
     return (
         <div {...blockProps}>
-            <div className="wp-block-group__inner-container">
-                <InnerBlocks.Content />
-            </div>
+            <div {...innerBlocksProps} />
         </div>
     );
 }

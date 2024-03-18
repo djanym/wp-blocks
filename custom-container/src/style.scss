@@ -17,101 +17,85 @@
 
     // Styles for "Horizontal scroller" style option.
     @if vars.$custom-container-has-horizontal-scroller-option {
-        &.is-horizontal-scroller {
+        .is-horizontal-scroller {
             @include mx.padding(10px 0 vars.$custom-container-horizontal-scroller-gap);
             display: flex;
+            flex-direction: row;
             overflow-x: scroll;
             scrollbar-color: vars.$color-4 #EEE;
 
-            > .wp-block-group__inner-container {
-                padding: 0;
-                display: flex;
-                flex-direction: row;
+            @if vars.$custom-container-horizontal-scroller-gap {
+                gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
+            }
 
-                @if vars.$custom-container-horizontal-scroller-gap {
-                    gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
-                }
+            // For admin editor only. Constraints the width of the wrapper to the WP blocks width.
+            &.block-editor-block-list__layout {
+                max-width: 840px;
+                margin: 0 auto;
+            }
 
-                //.wp-block-theme-card {
-                //    flex: 0 0 auto; /* Do not allow shrinking or growing */
-                //}
-
+            // For front-end.
+            &.wp-block-group__inner-container{
                 > div {
                     flex: 0 0 auto; /* Do not allow shrinking or growing */
                 }
             }
 
             // For admin editor.
-            > .block-editor-inner-blocks > .block-editor-block-list__layout {
-                display: flex;
-                flex-direction: row;
-
-                @if vars.$custom-container-horizontal-scroller-gap {
-                    gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
-                }
-
-                //.wp-block-theme-card {
-                //    flex: 0 0 auto; /* Do not allow shrinking or growing */
-                //    margin: 0;
-                //}
-
-                .wp-block {
-                    flex: 0 0 auto; /* Do not allow shrinking or growing */
-                    margin: 0;
-                }
+            > .wp-block {
+                flex: 0 0 auto; /* Do not allow shrinking or growing */
+                margin: 0;
             }
         }
     }
 
-    // Styles for "Inline Layout" style option.
+    // Styles for "Inline Layout" style option. //// TODO: This is not implemented yet.
     @if vars.$custom-container-has-flex-layout-option {
-        &.is-flex-layout {
+        .is-layout-flex {
+            //display: flex;
+            //flex-direction: row;
+            //flex-wrap: wrap;
 
-            > .block-editor-inner-blocks > .block-editor-block-list__layout, // For admin editor.
-            > .wp-block-group__inner-container {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-
-                @if vars.$custom-container-flex-layout-gap {
-                    gap: mx.rfs-value(vars.$custom-container-flex-layout-gap);
-                }
+            @if vars.$custom-container-flex-layout-gap {
+                gap: mx.rfs-value(vars.$custom-container-flex-layout-gap);
             }
-
-            // For admin editor only.
-            > .block-editor-inner-blocks > .block-editor-block-list__layout {
-                > .wp-block {
-                    margin: 0;
-                }
-            }
-
-            // Responsive adjustments.
-            //@media (max-width: 768px) {
-            //    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            //}
         }
+
+        // For admin editor only.
+        &.block-editor-block-list__layout {
+            > .wp-block {
+                margin: 0;
+            }
+        }
+
+        // Responsive adjustments.
+        //@media (max-width: 768px) {
+        //    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        //}
     }
 
     // Styles for "Grid Layout" style option.
     @if vars.$custom-container-has-grid-layout-option {
-        &.is-grid-layout {
+        .is-layout-grid {
 
-            > .block-editor-inner-blocks > .block-editor-block-list__layout, // For admin editor.
-            > .wp-block-group__inner-container {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            //> .block-editor-inner-blocks > .block-editor-block-list__layout, // For admin editor.
+            //> .wp-block-group__inner-container {
+            display: grid;
+            justify-content: center;
+            justify-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
-                @if vars.$custom-container-grid-layout-gap {
-                    gap: mx.rfs-value(vars.$custom-container-grid-layout-gap);
-                }
+            @if vars.$custom-container-grid-layout-gap {
+                gap: mx.rfs-value(vars.$custom-container-grid-layout-gap);
+            }
 
-                // Dynamic classes for columns number
-                @for $i from 1 through 12 {
-                    &.grid-cols-#{$i} {
-                        grid-template-columns: repeat($i, 1fr);
-                    }
+            // Dynamic classes for columns number
+            @for $i from 1 through 12 {
+                &.grid-cols-#{$i} {
+                    grid-template-columns: repeat($i, 1fr);
                 }
             }
+            //}
 
             // Responsive adjustments.
             //@media (max-width: 768px) {
