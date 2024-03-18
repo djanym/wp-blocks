@@ -3,12 +3,7 @@ import {
     __experimentalToolsPanel as ToolsPanel,
     __experimentalToolsPanelItem as ToolsPanelItem,
     SelectControl,
-    FontSizePicker,
-    PanelBody,
-    __experimentalToolsPanel as Label,
-    __experimentalToolsPanel as Spacer,
-    __experimentalToolsPanel as Header,
-    __experimentalToolsPanel as HeaderLabel
+    PanelBody
 } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 // Those files can contain any CSS code that gets applied to the editor.
@@ -28,36 +23,20 @@ export default function Edit({ attributes, setAttributes }) {
         }
     });
 
+    // Update block classes whenever widthOption or fontSize changes.
+    useEffect(() => {
+        updateBlockClasses();
+    }, [widthOption]);
+
     // Update block classes based on widthOption and fontSize
     const updateBlockClasses = () => {
         setBlockClasses(` width-${widthOption}`);
-        return;
-        // console.log(widthOption);
-        let classes = '';
-        // Add class based on widthOption value
-        if (widthOption === '50') {
-            classes += ' width-50';
-        } else if (widthOption === '100') {
-            classes += ' width-100';
-        } else if (widthOption === 'fixed') {
-            classes += ' width-fixed';
-        }
-        // Add class based on fontSize value
-        if (widthOption) {
-            classes += ` font-size-${widthOption}`;
-        }
-        setBlockClasses(classes);
     };
 
     const contentTemplate = [
         ['core/heading', { level: 4, placeholder: 'Add card heading' }],
         ['core/paragraph', { placeholder: 'Add card content...' }]
     ];
-
-    // Update block classes whenever widthOption or fontSize changes.
-    useEffect(() => {
-        updateBlockClasses();
-    }, [widthOption]);
 
     return (
         <div {...blockProps}>
