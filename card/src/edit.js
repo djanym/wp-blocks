@@ -1,10 +1,5 @@
-import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
-import {
-    __experimentalToolsPanel as ToolsPanel,
-    __experimentalToolsPanelItem as ToolsPanelItem,
-    SelectControl,
-    PanelBody
-} from '@wordpress/components';
+import { useBlockProps, InnerBlocks, useInnerBlocksProps, InspectorControls } from '@wordpress/block-editor';
+import { SelectControl, PanelBody } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 // Those files can contain any CSS code that gets applied to the editor.
 import './editor.scss';
@@ -23,6 +18,17 @@ export default function Edit({ attributes, setAttributes }) {
         }
     });
 
+    const innerBlocksProps = useInnerBlocksProps(
+        {},
+        {
+            template: [
+                ['core/heading', { level: 4, placeholder: 'Add card heading' }],
+                ['core/paragraph', { placeholder: 'Add card content...' }]
+            ],
+            templateInsertUpdatesSelection: false
+        }
+    );
+
     // Update block classes whenever widthOption or fontSize changes.
     useEffect(() => {
         updateBlockClasses();
@@ -32,11 +38,6 @@ export default function Edit({ attributes, setAttributes }) {
     const updateBlockClasses = () => {
         setBlockClasses(`width-${widthOption}`);
     };
-
-    const contentTemplate = [
-        ['core/heading', { level: 4, placeholder: 'Add card heading' }],
-        ['core/paragraph', { placeholder: 'Add card content...' }]
-    ];
 
     return (
         <div {...blockProps}>
@@ -61,7 +62,7 @@ export default function Edit({ attributes, setAttributes }) {
                 )}
             </InspectorControls>
 
-            <InnerBlocks template={contentTemplate} />
+            <div {...innerBlocksProps} />
         </div>
     );
 }

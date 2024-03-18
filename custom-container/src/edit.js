@@ -29,7 +29,6 @@ export default function Edit({ attributes, setAttributes }) {
         ['core/paragraph', { align: 'center', placeholder: 'Add content...' }]
     ];
 
-    // const innerBlocksProps = useInnerBlocksProps(blockProps);
     const innerBlocksProps = useInnerBlocksProps(
         {
             className: `${innerBlockClasses}`

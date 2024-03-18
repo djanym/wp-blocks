@@ -66,7 +66,7 @@ registerBlockType(metadata.name, {
         },
         widthOption: {
             type: 'string',
-            default: 'default-width'
+            default: ''
         }
     },
     supports: {

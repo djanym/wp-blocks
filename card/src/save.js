@@ -1,4 +1,4 @@
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const { hasWidthOption, widthOption } = attributes;
@@ -10,11 +10,13 @@ export default function save({ attributes }) {
         className: blockClass
     });
 
+    const innerBlocksProps = useInnerBlocksProps.save({
+        className: 'wp-card-block-inner-container' // Default class.
+    });
+
     return (
         <div {...blockProps}>
-            <div className="wp-card-block-inner-container">
-                <InnerBlocks.Content />
-            </div>
+            <div {...innerBlocksProps} />
         </div>
     );
 }
