@@ -59,6 +59,7 @@ registerBlockType(metadata.name, {
             type: 'string',
             default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
         },
+        // Custom features.
         hasWidthOption: {
             type: 'boolean',
             default: features.hasWidthOption ?? false

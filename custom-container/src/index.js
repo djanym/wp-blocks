@@ -12,6 +12,7 @@ import config from '../../../../wp-blocks.config.json';
 const attributes = config.blocks['custom-container'].attributes ?? {};
 const supports = config.blocks['custom-container'].supports ?? {};
 const styles = config.blocks['custom-container'].styles ?? [];
+const features = config.blocks['custom-container'].features ?? {};
 
 // registerBlockStyle( 'core/button', {
 //     name: 'custom-button',
@@ -58,6 +59,28 @@ registerBlockType(metadata.name, {
         gradient: {
             type: 'string',
             default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
+        },
+        // Custom features: horizontal scroller.
+        hasHorizontalScrollerOption: {
+            type: 'boolean',
+            default: features.hasHorizontalScrollerOption ?? false
+        },
+        horizontalScrollerOption: {
+            type: 'boolean',
+            default: false
+        },
+        // Custom features: grid layout.
+        hasGridLayoutOption: {
+            type: 'boolean',
+            default: features.hasGridLayoutOption ?? false
+        },
+        gridLayoutOption: {
+            type: 'boolean',
+            default: false
+        },
+        gridCols: {
+            type: 'integer',
+            default: 2
         }
     },
     supports: {

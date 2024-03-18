@@ -15,6 +15,103 @@
         @include mx.padding-bottom(vars.$custom-container-spacing-y);
     }
 
+    // Styles for "Horizontal scroller" style option.
+    @if vars.$custom-container-has-horizontal-scroller-option {
+        &.is-horizontal-scroller {
+            @include mx.padding(10px 0 vars.$custom-container-horizontal-scroller-gap);
+            display: flex;
+            overflow-x: scroll;
+            scrollbar-color: vars.$color-4 #EEE;
+
+            > .wp-block-group__inner-container {
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+
+                @if vars.$custom-container-horizontal-scroller-gap {
+                    gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
+                }
+
+                .wp-block-theme-card {
+                    flex: 0 0 auto; /* Do not allow shrinking or growing */
+                }
+            }
+
+            // For admin editor.
+            > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                display: flex;
+                flex-direction: row;
+
+                @if vars.$custom-container-horizontal-scroller-gap {
+                    gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
+                }
+
+                .wp-block-theme-card {
+                    flex: 0 0 auto; /* Do not allow shrinking or growing */
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    // Styles for "Inline Layout" style option.
+    @if vars.$custom-container-has-flex-layout-option {
+        &.is-inline-layout {
+
+            > .block-editor-inner-blocks > .block-editor-block-list__layout, // For admin editor.
+            > .wp-block-group__inner-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                @if vars.$custom-container-flex-layout-gap {
+                    gap: mx.rfs-value(vars.$custom-container-flex-layout-gap);
+                }
+            }
+
+            // Responsive adjustments.
+            //@media (max-width: 768px) {
+            //    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            //}
+
+            //.wp-block-theme-card {
+            //    margin: 0;
+            //}
+        }
+    }
+
+    // Styles for "Grid Layout" style option.
+    @if vars.$custom-container-has-grid-layout-option {
+        &.is-grid-layout {
+
+            > .block-editor-inner-blocks > .block-editor-block-list__layout, // For admin editor.
+            > .wp-block-group__inner-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+                @if vars.$custom-container-grid-layout-gap {
+                    gap: mx.rfs-value(vars.$custom-container-grid-layout-gap);
+                }
+
+                // Dynamic classes for columns number
+                @for $i from 1 through 12 {
+                    &.grid-cols-#{$i} {
+                        grid-template-columns: repeat($i, 1fr);
+                    }
+                }
+            }
+
+            // Responsive adjustments.
+            //@media (max-width: 768px) {
+            //    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            //}
+
+            //.wp-block-theme-card {
+            //    margin: 0;
+            //}
+        }
+    }
+
     &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
         //margin-top: 2em;
         //margin-bottom: 2em;

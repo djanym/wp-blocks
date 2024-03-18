@@ -1,9 +1,9 @@
-import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 // Those files can contain any CSS code that gets applied to the editor.
 import './editor.scss';
 
 // export default function Edit( props ) {
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes }) {
     const { textColor, backgroundColor, gradient } = attributes;
 
     const blockProps = useBlockProps({
@@ -16,7 +16,7 @@ export default function Edit({ attributes, setAttributes }) {
 
     const allowedBlocks = ['core/gallery'];
 
-    const contentTemplate = [['core/gallery', { }]];
+    const contentTemplate = [['core/gallery', {}]];
 
     return (
         <div {...blockProps}>

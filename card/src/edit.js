@@ -30,7 +30,7 @@ export default function Edit({ attributes, setAttributes }) {
 
     // Update block classes based on widthOption and fontSize
     const updateBlockClasses = () => {
-        setBlockClasses(` width-${widthOption}`);
+        setBlockClasses(`width-${widthOption}`);
     };
 
     const contentTemplate = [

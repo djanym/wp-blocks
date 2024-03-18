@@ -1,8 +1,24 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
+    const { hasHorizontalScrollerOption, horizontalScrollerOption } = attributes;
+    const { hasGridLayoutOption, gridLayoutOption, gridCols } = attributes;
+
+    // Define the class based on the condition.
+    const blockClass = [
+        hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
+        hasGridLayoutOption && gridLayoutOption && 'is-grid-layout',
+        hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    const blockProps = useBlockProps.save({
+        className: blockClass
+    });
+
     return (
-        <div {...useBlockProps.save()}>
+        <div {...blockProps}>
             <div className="wp-block-group__inner-container">
                 <InnerBlocks.Content />
             </div>
