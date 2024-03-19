@@ -17,7 +17,8 @@
 
     // Styles for "Horizontal scroller" style option.
     @if vars.$custom-container-has-horizontal-scroller-option {
-        .is-horizontal-scroller {
+        div.is-horizontal-scroller {
+            //@include mx.padding(10px 0 vars.$custom-container-horizontal-scroller-gap);
             @include mx.padding(10px 0 vars.$custom-container-horizontal-scroller-gap);
             display: flex;
             flex-direction: row;
@@ -54,19 +55,23 @@
         .is-layout-flex {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            //align-items: center;
             justify-content: center;
 
             @if vars.$custom-container-flex-layout-gap {
                 gap: mx.rfs-value(vars.$custom-container-flex-layout-gap);
-
-                > * {
-                    margin: 0;
-                }
             }
 
             &.is-vertical {
                 flex-direction: column;
+
+                @if vars.$custom-container-flex-layout-gap {
+                    > *,
+                    > div, {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                    }
+                }
 
                 > div {
                     width: 100%;
@@ -75,11 +80,15 @@
                     &.alignwide {
                         width: var(--breakout-content-max-width);
                         max-width: var(--full-width);
+                        //@include mx.margin-right(calc((var(--post-content-max-width) - var(--breakout-content-max-width)) / 2));
+                        //@include mx.margin-left(calc((var(--post-content-max-width) - var(--breakout-content-max-width)) / 2));
                     }
 
                     &.alignfull {
                         width: var(--full-width);
                         max-width: var(--full-width);
+                        //margin-left: calc((var(--half-width) - 50%) * -1);
+                        //margin-right: calc((var(--half-width) - 50%) * -1);
                     }
                 }
             }
