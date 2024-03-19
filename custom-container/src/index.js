@@ -90,6 +90,10 @@ registerBlockType(metadata.name, {
         flexLayoutOption: {
             type: 'boolean',
             default: false
+        },
+        flexDirection: {
+            type: 'string',
+            default: 'vertical'
         }
     },
     supports: {

@@ -1,5 +1,11 @@
 import { useBlockProps, InspectorControls, InnerBlocks, useInnerBlocksProps } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
+import {
+    PanelBody,
+    ToggleControl,
+    RangeControl,
+    __experimentalToggleGroupControl as ToggleGroupControl,
+    __experimentalToggleGroupControlOption as ToggleGroupControlOption
+} from '@wordpress/components';
 // Those files can contain any CSS code that gets applied to the editor.
 import './editor.scss';
 import { useEffect, useState } from '@wordpress/element';
@@ -9,7 +15,7 @@ export default function Edit({ attributes, setAttributes }) {
     const [innerBlockClasses, setInnerBlockClasses] = useState('');
     const { textColor, backgroundColor, gradient } = attributes;
     const { hasHorizontalScrollerOption, horizontalScrollerOption } = attributes;
-    const { hasFlexLayoutOption, flexLayoutOption } = attributes;
+    const { hasFlexLayoutOption, flexLayoutOption, flexDirection } = attributes;
     const { hasGridLayoutOption, gridLayoutOption, gridCols } = attributes;
     const minColsRange = 2;
     const maxColsRange = 12;
@@ -43,7 +49,7 @@ export default function Edit({ attributes, setAttributes }) {
     useEffect(() => {
         // updateBlockClasses();
         updateInnerBlockClasses();
-    }, [horizontalScrollerOption, gridLayoutOption, gridCols, flexLayoutOption]);
+    }, [horizontalScrollerOption, gridLayoutOption, gridCols, flexLayoutOption, flexDirection]);
 
     // Update block classes based on widthOption and fontSize
     const updateInnerBlockClasses = () => {
@@ -51,7 +57,8 @@ export default function Edit({ attributes, setAttributes }) {
             hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
             hasGridLayoutOption && gridLayoutOption && 'is-layout-grid',
             hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`,
-            hasFlexLayoutOption && flexLayoutOption && 'is-layout-flex'
+            hasFlexLayoutOption && flexLayoutOption && 'is-layout-flex',
+            hasFlexLayoutOption && flexLayoutOption && flexDirection && `is-${flexDirection}`
         ]
             .filter(Boolean)
             .join(' ');
@@ -99,12 +106,21 @@ export default function Edit({ attributes, setAttributes }) {
                             </>
                         )}
                         {hasFlexLayoutOption && (
-                            <ToggleControl
-                                label="Enable Flex Layout"
-                                help="When enabled, all content items will be displayed inline in multiple rows."
-                                checked={flexLayoutOption}
-                                onChange={value => allowOnlyOneOption('flexLayoutOption', value)}
-                            />
+                            <>
+                                <ToggleControl
+                                    label="Enable Flex Layout"
+                                    help="Helpful for creating flex-based layouts."
+                                    checked={flexLayoutOption}
+                                    onChange={value => allowOnlyOneOption('flexLayoutOption', value)}
+                                />
+
+                                {flexLayoutOption && (
+                                    <ToggleGroupControl label="Layout Direction" value={flexDirection} onChange={value => setAttributes({ flexDirection: value })} isBlock>
+                                        <ToggleGroupControlOption value="vertical" label="Vertical" />
+                                        <ToggleGroupControlOption value="horizontal" label="Horizontal" />
+                                    </ToggleGroupControl>
+                                )}
+                            </>
                         )}
                     </PanelBody>
                 )}

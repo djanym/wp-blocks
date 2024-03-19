@@ -3,7 +3,7 @@ import { useBlockProps, InnerBlocks, useInnerBlocksProps } from '@wordpress/bloc
 export default function save({ attributes }) {
     const { hasHorizontalScrollerOption, horizontalScrollerOption } = attributes;
     const { hasGridLayoutOption, gridLayoutOption, gridCols } = attributes;
-    const { hasFlexLayoutOption, flexLayoutOption } = attributes;
+    const { hasFlexLayoutOption, flexLayoutOption, flexDirection } = attributes;
 
     // Define the class based on the condition.
     const innerBlockClass = [
@@ -11,7 +11,8 @@ export default function save({ attributes }) {
         hasHorizontalScrollerOption && horizontalScrollerOption && 'is-horizontal-scroller',
         hasGridLayoutOption && gridLayoutOption && 'is-layout-grid',
         hasGridLayoutOption && gridLayoutOption && gridCols && `grid-cols-${gridCols}`,
-        hasFlexLayoutOption && flexLayoutOption && 'is-layout-flex'
+        hasFlexLayoutOption && flexLayoutOption && 'is-layout-flex',
+        hasFlexLayoutOption && flexLayoutOption && flexDirection && `is-${flexDirection}`
     ]
         .filter(Boolean)
         .join(' ');

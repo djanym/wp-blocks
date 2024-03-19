@@ -35,7 +35,7 @@
             }
 
             // For front-end. To make all blocks the same size.
-            &.wp-block-group__inner-container{
+            &.wp-block-group__inner-container {
                 > div {
                     flex: 0 0 auto; /* Do not allow shrinking or growing */
                 }
@@ -52,21 +52,55 @@
     // Styles for "Inline Layout" style option. //// TODO: This is not implemented yet.
     @if vars.$custom-container-has-flex-layout-option {
         .is-layout-flex {
-            //display: flex;
-            //flex-direction: row;
-            //flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
 
             @if vars.$custom-container-flex-layout-gap {
                 gap: mx.rfs-value(vars.$custom-container-flex-layout-gap);
+
+                > * {
+                    margin: 0;
+                }
+            }
+
+            &.is-vertical {
+                flex-direction: column;
+
+                > div {
+                    width: 100%;
+                    max-width: vars.$post-content-max-width;
+
+                    &.alignwide {
+                        width: var(--breakout-content-max-width);
+                        max-width: var(--full-width);
+                    }
+
+                    &.alignfull {
+                        width: var(--full-width);
+                        max-width: var(--full-width);
+                    }
+                }
+            }
+
+            &.is-horizontal {
+                flex-direction: row;
+            }
+
+            // For admin editor only. Constraints the width of the wrapper to the WP blocks width.
+            &.block-editor-block-list__layout {
+                max-width: 840px;
+                margin: 0 auto;
             }
         }
 
         // For admin editor only.
-        &.block-editor-block-list__layout {
-            > .wp-block {
-                margin: 0;
-            }
-        }
+        //&.block-editor-block-list__layout {
+        //> .wp-block {
+        //    margin: 0;
+        //}
+        //}
     }
 
     // Styles for "Grid Layout" style option.
