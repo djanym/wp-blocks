@@ -59,18 +59,6 @@ export default function Edit({ attributes, setAttributes }) {
         setInnerBlockClasses(classes);
     };
 
-    const allowOnlyOneOption = (optionName, value) => {
-        if (value) {
-            setAttributes({
-                horizontalScrollerOption: optionName === 'horizontalScrollerOption',
-                gridLayoutOption: optionName === 'gridLayoutOption',
-                flexLayoutOption: optionName === 'flexLayoutOption'
-            });
-        } else {
-            setAttributes({ [optionName]: value });
-        }
-    };
-
     return (
         <div {...blockProps}>
             <InspectorControls>
@@ -81,7 +69,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 label="Horizontal Scroller"
                                 help="If enabled, then all content will be positioned in one row with horizontal scrollbar."
                                 checked={horizontalScrollerOption}
-                                onChange={value => allowOnlyOneOption('horizontalScrollerOption', value)}
+                                onChange={value => setAttributes({ horizontalScrollerOption: value })}
                             />
                         )}
                         {hasGridLayoutOption && (
@@ -90,7 +78,7 @@ export default function Edit({ attributes, setAttributes }) {
                                     label="Enable Grid Layout"
                                     help="Helpful for creating grid-based layouts."
                                     checked={gridLayoutOption}
-                                    onChange={value => allowOnlyOneOption('gridLayoutOption', value)}
+                                    onChange={value => setAttributes({ gridLayoutOption: value })}
                                 />
 
                                 {gridLayoutOption && (
@@ -103,7 +91,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 label="Enable Flex Layout"
                                 help="When enabled, all content items will be displayed inline in multiple rows."
                                 checked={flexLayoutOption}
-                                onChange={value => allowOnlyOneOption('flexLayoutOption', value)}
+                                onChange={value => setAttributes({ flexLayoutOption: value })}
                             />
                         )}
                     </PanelBody>

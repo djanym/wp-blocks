@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "theme/custom-container",
+	"version": "1.0.1",
+	"title": "Custom Theme Container",
+	"category": "theme-custom-blocks",
+	"keywords": [
+		"container",
+		"block",
+		"custom"
+	],
+	"icon": "block-default",
+	"description": "Custom theme block with inner content area. Can be full width or wide or normal. Used for custom theme styles.",
+	"textdomain": "custom-container",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

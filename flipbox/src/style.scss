@@ -1,0 +1,111 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+@use "../../../scss/vars";
+@use "../../../scss/wp-theme-styles-lib/mixins" as mx;
+
+//$mobile-breakpoint: vars.$mobile-breakpoint;
+
+.wp-block-theme-custom-container {
+
+    @if vars.$custom-container-spacing-y {
+        @include mx.padding-top(vars.$custom-container-spacing-y);
+        @include mx.padding-bottom(vars.$custom-container-spacing-y);
+    }
+
+    // Styles for "Horizontal scroller" style option.
+    @if vars.$custom-container-has-horizontal-scroller-option {
+        .is-horizontal-scroller {
+            @include mx.padding(10px 0 vars.$custom-container-horizontal-scroller-gap);
+            display: flex;
+            flex-direction: row;
+            overflow-x: scroll;
+            scrollbar-color: vars.$color-4 #EEE;
+
+            @if vars.$custom-container-horizontal-scroller-gap {
+                gap: mx.rfs-value(vars.$custom-container-horizontal-scroller-gap);
+            }
+
+            // For admin editor only. Constraints the width of the wrapper to the WP blocks width.
+            &.block-editor-block-list__layout {
+                max-width: 840px;
+                margin: 0 auto;
+            }
+
+            // For front-end. To make all blocks the same size.
+            &.wp-block-group__inner-container{
+                > div {
+                    flex: 0 0 auto; /* Do not allow shrinking or growing */
+                }
+            }
+
+            // For admin editor. To make all blocks the same size.
+            > .wp-block {
+                flex: 0 0 auto; /* Do not allow shrinking or growing */
+                margin: 0;
+            }
+        }
+    }
+
+    // Styles for "Inline Layout" style option. //// TODO: This is not implemented yet.
+    @if vars.$custom-container-has-flex-layout-option {
+        .is-layout-flex {
+            //display: flex;
+            //flex-direction: row;
+            //flex-wrap: wrap;
+
+            @if vars.$custom-container-flex-layout-gap {
+                gap: mx.rfs-value(vars.$custom-container-flex-layout-gap);
+            }
+        }
+
+        // For admin editor only.
+        &.block-editor-block-list__layout {
+            > .wp-block {
+                margin: 0;
+            }
+        }
+    }
+
+    // Styles for "Grid Layout" style option.
+    @if vars.$custom-container-has-grid-layout-option {
+        .is-layout-grid {
+            display: grid;
+            justify-content: center;
+            justify-items: center;
+
+            @if vars.$custom-container-grid-layout-gap {
+                gap: mx.rfs-value(vars.$custom-container-grid-layout-gap);
+            }
+
+            // Dynamic classes for columns number
+            @for $i from 1 through 12 {
+                &.grid-cols-#{$i} {
+                    grid-template-columns: repeat($i, 1fr);
+                }
+            }
+
+            // For admin editor only. Constraints the width of the wrapper to the WP blocks width.
+            &.block-editor-block-list__layout {
+                max-width: 840px;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
+        //margin-top: 2em;
+        //margin-bottom: 2em;
+
+        .wp-block-group {
+            &__inner-container {
+            }
+        }
+
+        & + p {
+            @include mx.margin-top(2rem);
+        }
+    }
+}
