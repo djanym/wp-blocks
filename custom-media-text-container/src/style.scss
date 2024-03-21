@@ -15,6 +15,10 @@
     @if vars.$custom-media-text-container-gap {
         .wp-block-media-text {
             gap: vars.$custom-media-text-container-gap;
+
+            &__content {
+                padding: 0;
+            }
         }
     }
 

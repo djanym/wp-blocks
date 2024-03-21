@@ -43,17 +43,17 @@ registerBlockType(metadata.name, {
         // built-in attribute name. Works with `supports: { color: { text: true } }`.
         textColor: {
             type: 'string',
-            default: attributes.blockTextColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            default: attributes.blockTextColorPreset ?? null // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { background: true } }`.
         backgroundColor: {
             type: 'string',
-            default: attributes.blockBgColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            default: attributes.blockBgColorPreset ?? null // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { gradients: true } }`.
         gradient: {
             type: 'string',
-            default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
+            default: attributes.blockGradientBgColorPreset ?? null // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
         },
         // built-in attribute name.
         mediaType: {
