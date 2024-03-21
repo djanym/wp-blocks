@@ -6,24 +6,15 @@
 @use "../../../scss/vars";
 @use "../../../scss/wp-theme-styles-lib/mixins" as mx;
 
-//$mobile-breakpoint: vars.$mobile-breakpoint;
-
 .wp-block-theme-custom-media-text-container {
 
-    @if vars.$custom-gallery-container-spacing-y {
-        @include mx.padding-top(vars.$custom-gallery-container-spacing-y);
-        @include mx.padding-bottom(vars.$custom-gallery-container-spacing-y);
+    @if vars.$custom-media-text-container-spacing-y {
+        @include mx.padding-top(vars.$custom-media-text-container-spacing-y);
+        @include mx.padding-bottom(vars.$custom-media-text-container-spacing-y);
     }
-
-    .wp-block-gallery {
-        margin-top: 0;
-        margin-bottom: 0;
-
-        &.has-nested-images {
-            figure.wp-block-image:not(#individual-image) { // This is to prevent the styles from being overwritten by built-in styles.
-                margin-bottom: 0;
-                align-items: center;
-            }
+    @if vars.$custom-media-text-container-gap {
+        .wp-block-media-text {
+            gap: vars.$custom-media-text-container-gap;
         }
     }
 

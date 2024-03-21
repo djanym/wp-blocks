@@ -1,26 +1,44 @@
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, useInnerBlocksProps } from '@wordpress/block-editor';
 // Those files can contain any CSS code that gets applied to the editor.
 import './editor.scss';
 
 // export default function Edit( props ) {
 export default function Edit({ attributes }) {
-    const { textColor, backgroundColor, gradient } = attributes;
+    const { textColor, backgroundColor, gradient, mediaType, mediaUrl } = attributes;
 
-    const blockProps = useBlockProps({
-        style: {
-            textColor,
-            backgroundColor,
-            gradient
+    const blockProps = useBlockProps(
+        {
+            style: {
+                textColor,
+                backgroundColor,
+                gradient
+            }
+        },
+        {}
+    );
+
+    const innerBlocksProps = useInnerBlocksProps(
+        {},
+        {
+            template: [
+                [
+                    'core/media-text',
+                    {
+                        TEMPLATE: [
+                            ['core/heading', { level: 2, textAlign: 'center', placeholder: 'Add Heading' }],
+                            ['core/paragraph', { align: 'center', placeholder: 'Add content...' }]
+                        ],
+                        mediaType: mediaType ?? null,
+                        mediaUrl: mediaUrl ?? null
+                    }
+                ]
+            ]
         }
-    });
-
-    const allowedBlocks = ['core/media-text'];
-
-    const contentTemplate = [['core/media-text', {}]];
+    );
 
     return (
         <div {...blockProps}>
-            <InnerBlocks template={contentTemplate} allowBlocks={allowedBlocks} templateLock="all" />
+            <div {...innerBlocksProps} />
         </div>
     );
 }

@@ -12,7 +12,7 @@ import config from '../../../../wp-blocks.config.json';
 const attributes = config.blocks['custom-media-text-container'].attributes ?? {};
 const supports = config.blocks['custom-media-text-container'].supports ?? {};
 const styles = config.blocks['custom-media-text-container'].styles ?? [];
-const features = config.blocks['custom-media-text-container'].features ?? {};
+// const features = config.blocks['custom-media-text-container'].features ?? {};
 
 registerBlockType(metadata.name, {
     attributes: {
@@ -54,6 +54,16 @@ registerBlockType(metadata.name, {
         gradient: {
             type: 'string',
             default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
+        },
+        // built-in attribute name.
+        mediaType: {
+            type: 'string',
+            default: attributes.defaultMediaType ?? null
+        },
+        // built-in attribute name.
+        mediaUrl: {
+            type: 'string',
+            default: attributes.defaultMediaUrl ?? null
         }
     },
     supports: {
