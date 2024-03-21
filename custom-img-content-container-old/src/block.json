@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "theme/custom-img-content-container",
+	"version": "1.1.0",
+	"title": "Custom Image + Content Container",
+	"category": "theme-custom-blocks",
+	"keywords": [
+		"custom",
+		"image",
+		"content",
+		"container"
+	],
+	"icon": "columns",
+	"description": "Custom theme block with 2 columns: one media, one content area. Can be full width or wide or normal.",
+	"textdomain": "custom-img-content-container",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

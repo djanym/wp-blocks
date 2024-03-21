@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "theme/custom-media-text-container",
+    "version": "1.0.0",
+    "title": "Custom Media + Text Container",
+    "category": "theme-custom-blocks",
+    "icon": "media-text",
+    "description": "Custom theme block with 2 columns: one media, one content area. Can be full width or wide or normal.",
+    "keywords": [
+        "container",
+        "image",
+        "media",
+        "text",
+        "custom",
+        "block"
+    ],
+    "textdomain": "custom-media-text-container",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

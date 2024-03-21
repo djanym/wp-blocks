@@ -1,7 +1,7 @@
 {
-	"name": "custom-gallery-container",
+	"name": "custom-media-text-container",
 	"version": "1.0.0",
-	"description": "Display multiple images placed in a row. Can be used as a container for logos or similar images. Custom theme can override styles.",
+	"description": "Custom theme block with 2 columns: one media, one content area. Can be full width or wide or normal.",
 	"author": "Nael Concescu",
 	"sourceType": "module",
 	"scripts": {

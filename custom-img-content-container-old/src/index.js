@@ -1,10 +1,18 @@
-import { registerBlockType } from '@wordpress/blocks'
+import { registerBlockType } from '@wordpress/blocks';
 // The code used gets applied both to the front of your site and to the editor.
-import './style.scss'
+import './style.scss';
 // Internal dependencies
-import Edit from './edit'
-import save from './save'
-import metadata from './block.json'
+import Edit from './edit';
+import save from './save';
+import metadata from './block.json';
+
+// Get default values for the block attributes based on the custom theme configuration.
+import config from '../../../../wp-blocks.config.json';
+
+const attributes = config.blocks['custom-img-content-container'].attributes ?? {};
+const supports = config.blocks['custom-img-content-container'].supports ?? {};
+const styles = config.blocks['custom-img-content-container'].styles ?? [];
+const features = config.blocks['custom-img-content-container'].features ?? {};
 
 registerBlockType(metadata.name, {
     attributes: {
@@ -15,30 +23,41 @@ registerBlockType(metadata.name, {
         },
         align: {
             type: 'string',
-            default: 'full',
+            default: 'full'
         },
         // built-in attribute name. Works when text, background, gradient colors support enabled.
         style: {
-            type: 'object'
+            type: 'object',
+            // margin: 'value',
+            // padding: {
+            // top: 'value'
+            // }
+            default: {
+                color: {
+                    text: attributes.blockTextColor ?? '',
+                    background: attributes.blockBgColor ?? '',
+                    gradient: attributes.blockGradientBgColor ?? ''
+                }
+            }
         },
         // built-in attribute name. Works with `supports: { color: { text: true } }`.
         textColor: {
             type: 'string',
-            default: 'white', // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+            default: attributes.blockTextColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
         },
         // built-in attribute name. Works with `supports: { color: { background: true } }`.
-        // backgroundColor: {
-        //     type: 'string',
-        //     default: 'commtask-color-1' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
-        // },
+        backgroundColor: {
+            type: 'string',
+            default: attributes.blockBgColorPreset ?? '' // custom 'color-preset-slug' should be defined via add_theme_support( 'editor-color-palette') feature.
+        },
         // built-in attribute name. Works with `supports: { color: { gradients: true } }`.
         gradient: {
             type: 'string',
-            // default: 'gradient-slug', // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
+            default: attributes.blockGradientBgColorPreset ?? '' // custom 'gradient-preset-slug' should be defined via add_theme_support( 'editor-gradient-presets') feature.
         },
+        // Custom features: image block attributes.
         imageSrc: {
             type: 'string',
-            // source: 'attribute',
             default: ''
         },
         imageCaption: {
