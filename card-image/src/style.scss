@@ -1,0 +1,68 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+@use "../../../scss/vars";
+@use "../../../scss/wp-theme-styles-lib/mixins" as mx;
+
+.wp-block-theme-card {
+
+    @if vars.$card-container-default-width {
+        width: vars.$card-container-default-width;
+        flex-basis: vars.$card-container-default-width;
+    }
+
+    &.width-full {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    &.width-half {
+        width: 50%;
+        flex-basis: 50%;
+    }
+
+    &.width-third {
+        width: 33.333333%;
+        flex-basis: 33.333333%;
+    }
+
+    &.width-quarter {
+        width: 25%;
+        flex-basis: 25%;
+    }
+
+    &.width-fifth {
+        width: 20%;
+        flex-basis: 20%;
+    }
+
+    &.width-auto {
+        width: auto;
+        flex-basis: auto;
+    }
+
+    @if vars.$card-container-padding-y {
+        @include mx.padding-top(vars.$card-container-padding-y);
+        @include mx.padding-bottom(vars.$card-container-padding-y);
+    }
+
+    @if vars.$card-container-padding-x {
+        @include mx.padding-right(vars.$card-container-padding-x);
+        @include mx.padding-left(vars.$card-container-padding-x);
+    }
+
+    @if vars.$card-container-border-radius {
+        @include mx.border-radius(vars.$card-container-border-radius);
+    }
+
+    box-sizing: border-box;
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
+    }
+}

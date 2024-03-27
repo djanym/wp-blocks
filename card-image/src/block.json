@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "theme/card-image",
+	"version": "1.0.0",
+	"title": "Card with Image",
+	"category": "theme-custom-blocks",
+	"keywords": [
+		"card",
+		"image",
+		"cards"
+	],
+	"icon": "text-page",
+	"description": "Card block with image on top for custom theme. Can be used to display a card with an image and text.",
+	"textdomain": "card-image",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
