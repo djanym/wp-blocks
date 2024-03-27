@@ -6,11 +6,11 @@
 @use "../../../scss/vars";
 @use "../../../scss/wp-theme-styles-lib/mixins" as mx;
 
-.wp-block-theme-card {
+.wp-block-theme-card-image {
 
     @if vars.$card-container-default-width {
-        width: vars.$card-container-default-width;
-        flex-basis: vars.$card-container-default-width;
+        width: vars.$card-image-default-width;
+        flex-basis: vars.$card-image-default-width;
     }
 
     &.width-full {
@@ -44,17 +44,17 @@
     }
 
     @if vars.$card-container-padding-y {
-        @include mx.padding-top(vars.$card-container-padding-y);
-        @include mx.padding-bottom(vars.$card-container-padding-y);
+        @include mx.padding-top(vars.$card-image-padding-y);
+        @include mx.padding-bottom(vars.$card-image-padding-y);
     }
 
-    @if vars.$card-container-padding-x {
-        @include mx.padding-right(vars.$card-container-padding-x);
-        @include mx.padding-left(vars.$card-container-padding-x);
+    @if vars.$card-image-padding-x {
+        @include mx.padding-right(vars.$card-image-padding-x);
+        @include mx.padding-left(vars.$card-image-padding-x);
     }
 
-    @if vars.$card-container-border-radius {
-        @include mx.border-radius(vars.$card-container-border-radius);
+    @if vars.$card-image-border-radius {
+        @include mx.border-radius(vars.$card-image-border-radius);
     }
 
     box-sizing: border-box;
@@ -63,6 +63,20 @@
         margin-bottom: 0;
     }
 
+    .block-editor-block-list__layout, // For admin editor.
+    .wp-card-block-inner-container {
+        display: flex;
+        flex-direction: column;
+        @if vars.$card-image-inside-gap {
+            gap: mx.rfs-value(vars.$card-image-inside-gap);
+        }
+
+        > * {
+            margin: 0;
+        }
+    }
+
     &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
+        border: none;
     }
 }

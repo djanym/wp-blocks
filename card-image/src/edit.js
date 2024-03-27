@@ -22,7 +22,8 @@ export default function Edit({ attributes, setAttributes }) {
         {},
         {
             template: [
-                ['core/heading', { level: 4, placeholder: 'Add card heading' }],
+                ['core/image', {}],
+                ['core/heading', { level: 6, placeholder: 'Add card heading' }],
                 ['core/paragraph', { placeholder: 'Add card content...' }]
             ],
             templateInsertUpdatesSelection: false
