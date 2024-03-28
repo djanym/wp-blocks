@@ -63,6 +63,21 @@
         margin-bottom: 0;
     }
 
+    .block-editor-block-list__layout, // For the admin editor.
+    .wp-card-block-inner-container {
+        display: flex;
+        flex-direction: column;
+
+        @if vars.$card-inside-gap {
+            gap: vars.$card-inside-gap;
+
+            > *,
+            > div {
+                margin: 0;
+            }
+        }
+    }
+
     &:not(.wp-block) { // This is to prevent the styles from being applied in the editor
     }
 }
